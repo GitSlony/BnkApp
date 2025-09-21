@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [tool.poetry]
-packages = [{include = "bnk_app", from = "src"},{include = "src/py.typed"}]
+packages = [{include = "bnk_app", from = "src"}]
 
 
 [tool.poetry.group.lint.dependencies]

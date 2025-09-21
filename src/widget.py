@@ -1,7 +1,7 @@
 import re
 from datetime import datetime
 
-from masks import get_mask_account, get_mask_card_number
+from .masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(in_str: str) -> str:
@@ -9,7 +9,7 @@ def mask_account_card(in_str: str) -> str:
     if "Счет" in in_str:
         l_acc_num = re.search(r"\d+", in_str)
         if l_acc_num:
-            return get_mask_account(int(l_acc_num[0]))
+            return str(get_mask_account(int(l_acc_num[0])))
         else:
             print("Строка не содержит нормера счета")
             return " "
@@ -18,12 +18,12 @@ def mask_account_card(in_str: str) -> str:
         if not l_card_num:
             l_card_num = re.search(r"\d+", in_str)
             if l_card_num:
-                return get_mask_card_number(int(l_card_num[0]))
+                return str(get_mask_card_number(int(l_card_num[0])))
             else:
                 print("Строка не содержит нормера карты")
                 return " "
         else:
-            return get_mask_card_number(int(l_card_num[0].replace(" ", "")))
+            return str(get_mask_card_number(int(l_card_num[0].replace(" ", ""))))
     else:
         print("Неправильный формат входной строки")
         return " "
