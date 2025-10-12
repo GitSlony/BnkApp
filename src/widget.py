@@ -33,3 +33,9 @@ def get_date(in_str: str) -> str:
     """Преобразует строку с датой вида 2024-03-11T02:26:18.671407 к виду 11.03.2024"""
     intr_date = datetime.strptime(in_str, "%Y-%m-%dT%H:%M:%S.%f")
     return intr_date.strftime("%d.%m.%Y")
+
+
+def get_date_real(in_str: str) -> datetime:
+    """Преобразует строку с датой вида 2024-03-11T02:26:18.671407 к дате"""
+    intr_date = datetime.strptime(in_str, "%Y-%m-%dT%H:%M:%S.%f")
+    return intr_date
