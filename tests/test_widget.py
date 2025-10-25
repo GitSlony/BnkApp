@@ -17,6 +17,7 @@ def test_get_date(str_date: str, expected_result: str) -> None:
 def test_get_bad_date(str_date: str, expected_result: str) -> None:
     with pytest.raises(ValueError) as exc_info:
         get_date(str_date)
+    print(str(exc_info.value))
 
 
 @pytest.mark.parametrize(

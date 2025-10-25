@@ -23,6 +23,7 @@ def test_sort_by_date(test_trn_list_dict: List[dict]) -> None:
 def test_sort_by_bad_date(test_bad_date_trn_list_dict: List[dict]) -> None:
     with pytest.raises(ValueError) as exc_info:
         sort_by_date(test_bad_date_trn_list_dict)
+    print(str(exc_info.value))
 
 
 def test_filter_by_state(test_trn_list_dict: List[dict]) -> None:
