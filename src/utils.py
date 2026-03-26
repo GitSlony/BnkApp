@@ -1,5 +1,4 @@
 import json
-import os
 from datetime import datetime
 
 from jsonpath_ng import parse  # type: ignore
@@ -40,17 +39,12 @@ def get_json_attr_date(data: dict, path: str) -> datetime | None:
 
 def read_json_trn(cFileName: str, cEncoding: str = "UTF-8") -> list:
     """Функция чтения JSON из файла"""
-    if os.path.exists(cFileName) == 0:
-        return list()
-    elif os.path.getsize(cFileName) == 0:
-        return list()
-    else:
+    try:
         with open(cFileName, encoding=cEncoding) as f:
             data = list(json.load(f))
             f.close()
-        if data is None:
-            return list()
-        elif isinstance(data, list) == 0:
-            return list()
-        else:
             return data
+    except json.JSONDecodeError:
+        return list()
+    except FileNotFoundError:
+        return list()
