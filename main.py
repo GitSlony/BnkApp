@@ -1,6 +1,5 @@
 from src.log_mng import mainLog
 from src.masks import get_mask_account
-
 # from src.processing import filter_by_state, sort_by_date
 # from src.widget import get_date, mask_account_card
 from src.utils import get_json_attr_float, get_json_attr_str, read_json_trn
