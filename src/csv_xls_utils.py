@@ -1,4 +1,5 @@
 from csv import DictReader
+from typing import List
 
 import pandas as pd
 
@@ -30,3 +31,18 @@ def read_xls_trn(cFileName: str) -> list:
     except FileNotFoundError:
         mainLog().error(f"Файл {cFileName} не найден")
         return list()
+
+
+def json2flat(in_dict_list: List[dict]) -> List:
+    """Конвертация json  к  плоскому виду"""
+    mainLog().debug("Конвертация json  к  плоскому виду")
+    return [
+        one
+        | {
+            "amount": one["operationAmount"]["amount"],
+            "currency_name": one["operationAmount"]["currency"]["name"],
+            "currency_code": one["operationAmount"]["currency"]["code"],
+        }
+        for one in in_dict_list
+        if not (one == {})
+    ]
